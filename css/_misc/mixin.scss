@@ -1,0 +1,70 @@
+@mixin box-shadow($shadow) {
+	box-shadow: $shadow;
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+}
+
+%clearfix {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin inline($align: top) {
+	display: inline-block;
+	vertical-align: $align;
+}
+
+@mixin middle-block($height) {
+	&::before {
+		content: "";
+		@include inline(middle);
+		height: $height;
+	}
+}
+
+@mixin non-padding() {
+	margin: 0;
+	padding: 0;
+}
+
+@mixin non-select() {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+@function rem($px) {
+	@return $px / 16px + 0rem;
+}
+
+@mixin desktop {
+	@media screen and (max-width: 1200px) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media screen and (max-width: 960px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin album-mobile {
+	@media screen and (max-width: 480px) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media screen and (max-width: 320px) {
+		@content;
+	}
+}
